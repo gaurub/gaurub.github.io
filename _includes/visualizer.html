@@ -1,0 +1,25 @@
+{%- comment -%}
+Embeds an interactive page from assets/visualizers/.
+Usage: {% include visualizer.html src="tile-walk.html" title="Kernel 2 Tile Walk" %}
+The iframe grows to fit the page inside it, so readers never scroll inside it.
+{%- endcomment -%}
+{%- assign viz_url = '/assets/visualizers/' | append: include.src | relative_url -%}
+<figure class="viz">
+  <iframe src="{{ viz_url }}" title="{{ include.title }}" loading="lazy"
+          style="display:block;width:100%;height:1100px;border:0"
+          onload="vizFit(this)"></iframe>
+  <figcaption><a href="{{ viz_url }}">Open the visualizer on its own page</a></figcaption>
+</figure>
+<style>
+  .viz { width: min(1240px, calc(100vw - 32px)); position: relative; left: 50%; transform: translateX(-50%); margin: 1.5rem 0; }
+  .viz figcaption { font-size: 0.85rem; text-align: center; margin-top: 0.4rem; }
+</style>
+<script>
+  function vizFit(f) {
+    try {
+      var d = f.contentDocument, fit = function () { f.style.height = d.documentElement.scrollHeight + 'px'; };
+      fit();
+      new ResizeObserver(fit).observe(d.body);
+    } catch (e) { /* cross-origin: keep the fixed height */ }
+  }
+</script>

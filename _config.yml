@@ -1,0 +1,21 @@
+title: Gaurub Pandey
+description: >-
+  A worklog: re-implementing Simon Boehm's CUDA matmul kernels in CuTe DSL,
+  stumbles included.
+author:
+  name: Gaurub Pandey
+theme: minima
+plugins:
+  - jekyll-feed
+markdown: kramdown
+kramdown:
+  input: GFM
+permalink: /:title/
+# Set these once the GitHub repo exists. For a <username>.github.io repo,
+# url is https://<username>.github.io and baseurl stays empty.
+url: "https://gaurub.github.io"
+baseurl: ""
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
