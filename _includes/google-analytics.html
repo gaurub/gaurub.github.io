@@ -1,0 +1,18 @@
+{%- comment -%}
+Overrides minima 2.5.1's include, which uses the retired analytics.js snippet
+and doesn't work with GA4 "G-" measurement IDs. minima's head.html includes
+this only when jekyll.environment is production and site.google_analytics is set.
+Like the original, it skips tracking when the browser sends Do Not Track.
+{%- endcomment -%}
+<script>
+if (!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
+  var s = document.createElement("script");
+  s.async = true;
+  s.src = "https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}";
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag("js", new Date());
+  gtag("config", "{{ site.google_analytics }}");
+}
+</script>

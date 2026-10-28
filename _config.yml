@@ -19,3 +19,6 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+
+# Google Analytics 4. Only emitted in production builds (GitHub Pages builds as production).
+google_analytics: G-N8M5E17MML
